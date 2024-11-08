@@ -1,8 +1,7 @@
 package clases;
 
 public class Suma {
-    public Suma(){}
-
+    private Suma(){}
     /**
      * Realiza la suma de dos parámetros
      * @param operando1 Primer número
