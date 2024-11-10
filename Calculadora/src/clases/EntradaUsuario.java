@@ -6,7 +6,6 @@
     import java.util.Scanner;
 
     public class EntradaUsuario {
-        int operando = 1;
         Scanner teclado;
 
         public EntradaUsuario(){
@@ -28,20 +27,22 @@
             return numero;
         }
 
-        public  double operando(){
+        public double entradaDouble(String... mensajes){
             double numero;
+            String mensajeTry = mensajes.length > 0 ? mensajes[0] : null;
             while (true){
-                System.out.print("Proporciona el valor del operando " + operando + ": ");
                 try {
+                    if(mensajeTry != null && !mensajeTry.isEmpty()){
+                        System.out.print(mensajeTry);
+                    }
                     numero = teclado.nextDouble();
                     break;
                 }
                 catch (InputMismatchException e) {
-                    System.out.println("Entrada inválida. Ingrese un número para el operando " + operando);
+                    System.out.println("Entrada inválida. Ingrese un número");
                     teclado.next();
                 }
-            };
-            operando++;
+            }
             return numero;
         }
 
@@ -57,14 +58,16 @@
         }
 
         public List<Double> entradaOperandos(){
+            int operando = 1;
             List<Double> operandos = new ArrayList<Double>();
             boolean isNewOperando;
             do {
-                operandos.add(this.operando());
+                String mensaje= "Proporciona el valor del operando " + operando + ": ";
+                double numero = this.entradaDouble(mensaje);
+                operandos.add(numero);
+                operando++;
                 isNewOperando = this.entradaBooleana("¿Desea añadir otro operando?");
             }while (isNewOperando);
-
-            operando = 1;
 
             return operandos;
         }
