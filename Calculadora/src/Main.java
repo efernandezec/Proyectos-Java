@@ -12,63 +12,68 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int opcion;
-        boolean continuar;
+        int operacion;
 
         EntradaUsuario entradaUsuario = new EntradaUsuario();
 
         do {
             System.out.println("**** Aplicacion de Calculadora ****");
-            System.out.println("""
+            mostrarMenu();
+
+            System.out.print("Por favor seleccione la operación a realizar : ");
+            operacion = entradaUsuario.entradaInt();
+
+            if(operacion >= 1 && operacion <=4){
+                List<Double> operandos;
+                operandos = entradaUsuario.entradaOperandos();
+                ejecutarOperacion(operacion, operandos);
+
+                if(!entradaUsuario.entradaBooleana("¿Desea realizar otra operacion? ")){
+                    System.out.println("Hasta pronto...");
+                    break;
+                }
+
+            } else if (operacion == SALIR) {
+                System.out.print("Hasta pronto...");
+                break;
+            }
+            else{
+                System.out.println("La operación " + operacion + " no es una opción válida");
+            }
+        } while (true);
+    }
+    private static void mostrarMenu(){
+        System.out.println("""
                 1. Suma
                 2. Resta
                 3. Multiplicación
                 4. División
                 5. Salir
                 """);
+    }
 
-            System.out.print("Por favor seleccione la operación a realizar : ");
-            opcion = entradaUsuario.entradaInt();
-
-            if(opcion >= 1 && opcion <=4){
-                double resultado = 0;
-                List<Double> operandos;
-                operandos = entradaUsuario.entradaOperandos();
-
-                switch (opcion){
-                    case SUMA -> {
-                        resultado = Suma.sumar(operandos);
-                        System.out.println("El resultado de sumar " + operandos + " es : " + resultado);
-                        }
-                    case RESTA -> {
-                        resultado= Resta.restar(operandos);
-                        System.out.println("El resultado de restar " + operandos+ " es :" + resultado);
-                        }
-                    case MULTIPLICACION -> {
-                        resultado = Multiplicacion.multiplicar(operandos);
-                        System.out.println("El resultado de multiplicar " + operandos+ " es :" + resultado);
-                        }
-                    case DIVISION -> {
-                        resultado = Division.division(operandos);
-                        System.out.println("El resultado de dividir " + operandos+ " es :" + resultado);
-                        }
-                    default -> {
-                        System.out.println("Method not implemented");
-                        }
-                }
-                continuar = entradaUsuario.entradaBooleana("¿Desea realizar otra operacion? ");
-                if(!continuar) {
-                    System.out.println("Hasta pronto...");
-                    break;
-                };
-
-            } else if (opcion == SALIR) {
-                System.out.print("Hasta pronto...");
-                break;
+    private static void ejecutarOperacion(int operacion, List<Double> operandos){
+        double resultado;
+        switch (operacion){
+            case SUMA -> {
+                resultado = Suma.sumar(operandos);
+                System.out.println("El resultado de sumar " + operandos + " es : " + resultado);
             }
-            else{
-                System.out.println("La opción " + opcion + " no es una opción válida");
+            case RESTA -> {
+                resultado= Resta.restar(operandos);
+                System.out.println("El resultado de restar " + operandos+ " es :" + resultado);
             }
-        } while (true);
+            case MULTIPLICACION -> {
+                resultado = Multiplicacion.multiplicar(operandos);
+                System.out.println("El resultado de multiplicar " + operandos+ " es :" + resultado);
+            }
+            case DIVISION -> {
+                resultado = Division.division(operandos);
+                System.out.println("El resultado de dividir " + operandos+ " es :" + resultado);
+            }
+            default -> {
+                System.out.println("Method not implemented");
+            }
+        }
     }
 }
