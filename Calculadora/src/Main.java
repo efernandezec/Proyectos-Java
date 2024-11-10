@@ -1,5 +1,4 @@
-import clases.EntradaUsuario;
-import clases.Suma;
+import clases.*;
 
 import java.util.List;
 
@@ -34,27 +33,42 @@ public class Main {
             if(opcion >= 1 && opcion <=4){
                 double resultado = 0;
                 List<Double> operandos;
+                operandos = entradaUsuario.entradaOperandos();
 
                 switch (opcion){
                     case SUMA -> {
-                        operandos = entradaUsuario.entradaOperandos();
                         resultado = Suma.sumar(operandos);
-
                         System.out.println("El resultado de sumar " + operandos + " es : " + resultado);
-                    }
+                        }
+                    case RESTA -> {
+                        resultado= Resta.restar(operandos);
+                        System.out.println("El resultado de restar " + operandos+ " es :" + resultado);
+                        }
+                    case MULTIPLICACION -> {
+                        resultado = Multiplicacion.multiplicar(operandos);
+                        System.out.println("El resultado de multiplicar " + operandos+ " es :" + resultado);
+                        }
+                    case DIVISION -> {
+                        resultado = Division.division(operandos);
+                        System.out.println("El resultado de dividir " + operandos+ " es :" + resultado);
+                        }
                     default -> {
                         System.out.println("Method not implemented");
-                    }
+                        }
                 }
                 continuar = entradaUsuario.entradaBooleana("¿Desea realizar otra operacion? ");
-                if(!continuar) break;
+                if(!continuar) {
+                    System.out.println("Hasta pronto...");
+                    break;
+                };
 
             } else if (opcion == SALIR) {
                 System.out.print("Hasta pronto...");
+                break;
             }
             else{
                 System.out.println("La opción " + opcion + " no es una opción válida");
             }
-        } while (opcion != SALIR);
+        } while (true);
     }
 }

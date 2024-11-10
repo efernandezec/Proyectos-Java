@@ -49,7 +49,7 @@
             String input;
 
             do {
-                System.out.print(texto + "Solo se acepta (Y/N) :");
+                System.out.print(texto + "  Solo se acepta (Y/N) :");
                 input = teclado.next().trim().toUpperCase();
             } while (!input.equals("Y") && !input.equals("N"));
 
@@ -64,7 +64,7 @@
                 isNewOperando = this.entradaBooleana("¿Desea añadir otro operando?");
             }while (isNewOperando);
 
-            operando = 0;
+            operando = 1;
 
             return operandos;
         }
