@@ -1,4 +1,5 @@
 import clases.Consola;
+import clases.ManejoArchivos;
 import clases.Persona;
 
 import java.util.ArrayList;
@@ -75,8 +76,10 @@ public class Main {
         Persona newPersona = new Persona(nombre, apellido, telefono, email);
         personas.add(newPersona);
 
-        System.out.println("Se ha agregado con éxito a " + newPersona);
-        System.out.println("En total hay " + personas.size() + " personas en el listado");
+        ManejoArchivos.writeFile("bd.txt", newPersona);
+
+//        System.out.println("Se ha agregado con éxito a " + newPersona);
+//        System.out.println("En total hay " + personas.size() + " personas en el listado");
     }
 
     public static void listarPersonas(List<Persona> personas){

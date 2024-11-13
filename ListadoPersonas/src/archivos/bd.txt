@@ -1,0 +1,3 @@
+Persona{id=1, nombre='sdf', apellido='sfd', telefono='sdf', email='sdf'} con dirección en memoria:  clases.Persona@33c7353a
+Persona{id=2, nombre='Prueba 2', apellido=':d', telefono='641', email='PRUEBITA@GMAIL.COM'} con dirección en memoria:  clases.Persona@119d7047
+Persona{id=1, nombre='Prueba nueva', apellido='sdfsd', telefono='sdfds', email='sdfsd'} con dirección en memoria:  clases.Persona@33c7353a
