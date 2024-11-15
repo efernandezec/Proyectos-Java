@@ -10,12 +10,14 @@ public class Consola {
         consola = new Scanner(System.in);
     }
 
-    public int entradaInt(){
+    public int entradaInt(String texto){
         int entrada;
 
         while (true){
             try {
-                System.out.print("Proporcione la opción a realizar : ");
+                if(texto != null){
+                    System.out.print(texto);
+                }
                 entrada = consola.nextInt();
                 break;
             }
