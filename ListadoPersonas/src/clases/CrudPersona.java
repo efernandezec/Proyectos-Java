@@ -26,15 +26,23 @@ public class CrudPersona {
         System.out.println("Persona registrada con éxito: " + newPersona);
     }
 
-    public Persona updatePersona(int id, Persona persona){
+    public Persona updatePersona(int id, String nombre, String apellido,  String email, String telefono){
         Persona obj = this.getPersona(id);
         if(obj != null){
-            obj.setNombre(persona.getNombre());
-            obj.setApellido(persona.getApellido());
-            obj.setEmail(persona.getEmail());
-            obj.setTelefono(persona.getTelefono());
-            System.out.println("Persona con id " + id + " actualizada con éxito");
-            return obj;
+            if (nombre != null){
+                obj.setNombre(nombre);
+            }
+            if (apellido != null){
+                obj.setApellido(apellido);
+            }
+            if (email != null){
+                obj.setEmail(email);
+            }
+            if (telefono != null){
+                obj.setTelefono(telefono);
+            }
+            System.out.println("Persona con id : " + id + " actualizada con éxito");
+            return this.getPersona(id);
         }
         return null;
     }
@@ -50,14 +58,17 @@ public class CrudPersona {
         return null;
     }
 
-    public void  getAllPersona(){
+    public boolean  getAllPersona(){
         if(!this.personas.isEmpty()) {
+            System.out.println("Listado de personas");
             this.personas.forEach(((persona) -> {
                 System.out.println(persona.getId() + "." + persona);
             }));
+            return true;
         }
         else {
             System.out.println("No hay personas en el listado");
+            return false;
         }
     }
 

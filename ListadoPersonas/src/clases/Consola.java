@@ -28,16 +28,26 @@ public class Consola {
         }
         return entrada;
     }
+    public boolean entradaBoolean(String texto){
+        String entrada;
+        do {
+            System.out.print(texto + " Solo se acepta (Y/N) :");
+            entrada = consola.nextLine().toUpperCase().trim();
+        }
+        while (!entrada.equals("Y") && !entrada.equals("N"));
 
-    public String entradaString(String campo){
+        return entrada.equals("Y");
+    }
+
+    public String entradaString(String texto){
         String entrada;
         while (true){
-            System.out.print("Proporcione el " + campo + ": ");
+            System.out.print(texto);
             entrada = consola.nextLine();
             if(!entrada.isEmpty()){
                 break;
             }
-            System.out.println("El " + campo + " no puede estar vacio.");
+            System.out.println("El campo no puede estar vacio.");
         }
         return entrada;
 

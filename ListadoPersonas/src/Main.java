@@ -60,23 +60,18 @@ public class Main {
     public static void operacionesListado(int opcion, Consola consola, List<Persona> personas){
         switch (opcion){
             case AGREGAR -> agregar(consola);
-            case EDITAR -> {
-
-            }
+            case EDITAR -> editar(consola);
             case ELIMINAR -> eliminar(consola);
-
-            case LISTAR -> {
-                crudPersona.getAllPersona();
-            }
+            case LISTAR -> crudPersona.getAllPersona();
         }
     }
 
     private static void agregar(Consola consola){
         consola.limpiarBuffer();
-        String nombre = consola.entradaString("nombre");
-        String apellido = consola.entradaString("apellido");
-        String telefono = consola.entradaString("teléfono");
-        String email = consola.entradaString("email");
+        String nombre = consola.entradaString("Proporcione el nombre : ");
+        String apellido = consola.entradaString("Proporcione el apellido : ");
+        String telefono = consola.entradaString("Proporcione el teléfono : ");
+        String email = consola.entradaString("Proporcione el email : ");
 
         crudPersona.addPersona(nombre, apellido, telefono, email);
     }
@@ -85,6 +80,46 @@ public class Main {
         crudPersona.getAllPersona();
         int idPersona = consola.entradaInt("Digite el número de la persona que desea eliminar: ");
         crudPersona.deletePersona(idPersona);
+    }
+
+    private static void editar(Consola consola){
+        String newNombre = null, newApellido = null, newEmail = null, newTelefono = null;
+        boolean existenPersonas = crudPersona.getAllPersona();
+        if(existenPersonas){
+            int idPersona = consola.entradaInt("Digite el número de la persona que desea editar: ");
+            Persona persona = crudPersona.getPersona(idPersona);
+            if(persona != null){
+                System.out.println("Datos actuales de la persona :");
+                System.out.println("Nombre : " + persona.getNombre());
+                System.out.println("Apellido : " + persona.getApellido());
+                System.out.println("Email : " + persona.getEmail());
+                System.out.println("Teléfono : " + persona.getTelefono());
+
+                consola.limpiarBuffer();
+                boolean isNewNombre = consola.entradaBoolean("¿Desea modificar el nombre de la persona? ");
+                if(isNewNombre){
+                    newNombre = consola.entradaString("Digite el nuevo nombre de la persona : ");
+                }
+
+                boolean isNewApellido = consola.entradaBoolean("¿Desea modificar el apellido de la persona? ");
+                if(isNewApellido){
+                    newApellido = consola.entradaString("Digite el nuevo apellido de la persona :");
+                }
+
+                boolean isNewEmail = consola.entradaBoolean("¿Desea modificar el email de la persona? :");
+                if(isNewEmail){
+                    newEmail = consola.entradaString("Digite el nuevo nombre de la persona :");
+                }
+
+                boolean isNewTelefono = consola.entradaBoolean("¿Desea modificar el teléfono de la persona? : ");
+                if(isNewTelefono){
+                    newTelefono = consola.entradaString("Digite el nuevo nombre de la persona :");
+                }
+                crudPersona.updatePersona(idPersona, newNombre, newApellido, newEmail, newTelefono);
+            }
+
+        }
+
     }
 
 }
