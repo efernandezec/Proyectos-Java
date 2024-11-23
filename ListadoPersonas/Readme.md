@@ -26,7 +26,10 @@ cd ListadoPersonas
 
 
 
-https://github.com/user-attachments/assets/778277d9-30dd-4aaf-9620-721c5a79fb48
+https://github.com/user-attachments/assets/1a8e3159-f406-4b53-9377-642d557dd480
+
+
+
 
 
 ### Technologies
