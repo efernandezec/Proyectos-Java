@@ -108,12 +108,12 @@ public class Main {
 
                 boolean isNewEmail = consola.entradaBoolean("¿Desea modificar el email de la persona? :");
                 if(isNewEmail){
-                    newEmail = consola.entradaString("Digite el nuevo nombre de la persona :");
+                    newEmail = consola.entradaString("Digite el nuevo email de la persona :");
                 }
 
                 boolean isNewTelefono = consola.entradaBoolean("¿Desea modificar el teléfono de la persona? : ");
                 if(isNewTelefono){
-                    newTelefono = consola.entradaString("Digite el nuevo nombre de la persona :");
+                    newTelefono = consola.entradaString("Digite el nuevo teléfono de la persona :");
                 }
                 crudPersona.updatePersona(idPersona, newNombre, newApellido, newEmail, newTelefono);
             }
